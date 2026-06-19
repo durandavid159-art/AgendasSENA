@@ -5,4 +5,5 @@ import lombok.Data;
 @Data
 public class InstructorDto {
     private String nombre;
+    private String telefono;
 }

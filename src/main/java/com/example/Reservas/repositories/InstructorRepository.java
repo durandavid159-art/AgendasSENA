@@ -10,7 +10,7 @@ import com.example.Reservas.entities.Instructor;
 
 public interface InstructorRepository extends JpaRepository<Instructor, Long> {
 
-    @Query ("SELECT COUNT (r) > 0 FROM  Reservar r WHERE r.instructor.id = :instructorId " + "AND r.estado = 'ACTIVA' AND r.fechaHorarioInicio < :fin AND r.fechaHoraFin > :inicio")
+    @Query ("SELECT COUNT(r) > 0 FROM  Reservar r WHERE r.instructor.id = :instructorId " + "AND r.estado = 'ACTIVA' AND r.fechaHorarioInicio < :fin AND r.fechaHoraFin > :inicio")
 
     boolean existsOverlappingInstructor(@Param("instrutorId") Long instructorId, @Param ("inicio") LocalDateTime inicio, @Param("fin") LocalDateTime fin);
 }
