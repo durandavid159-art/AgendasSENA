@@ -1,0 +1,655 @@
+{
+  "info": {
+    "_postman_id": "7a817137-ea42-4b67-b505-be23f8bf960b",
+    "name": "AgendasSena",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53960647"
+  },
+  "item": [
+    {
+      "name": "Ambiente",
+      "item": [
+        {
+          "name": "Registar ambiente",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombre\": \"ambiente 31\",\r\n    \"capacidad\": 89,\r\n    \"tipo\": \"Auditorio\",\r\n    \"activo\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/ambientes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "ambientes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar ambientes",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/ambientes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "ambientes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Ambientes Disponibles",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombre\": \"ambiente 11\",\r\n    \"capacidad\": 100,\r\n    \"tipo\": \"Auditorio\",\r\n    \"activo\": true\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/ambientes/disponibles?fecha=2026-06-21&horaInicio=18:00:00&horaFin=22:00:00",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "ambientes",
+                "disponibles"
+              ],
+              "query": [
+                {
+                  "key": "fecha",
+                  "value": "2026-06-21"
+                },
+                {
+                  "key": "horaInicio",
+                  "value": "18:00:00"
+                },
+                {
+                  "key": "horaFin",
+                  "value": "22:00:00"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Instructor",
+      "item": [
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombre\": \"Yenny\",\r\n    \"telefono\": \"3124321122\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/instructores",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "instructores"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Consultar",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombre\": \"Ana\",\r\n    \"telefono\": \"3124321122\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/instructores",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "instructores"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Reserva",
+      "item": [
+        {
+          "name": "Casos Prueba",
+          "item": [
+            {
+              "name": "Regla 2  Capacidad",
+              "item": [
+                {
+                  "name": "Capacidad Valida",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"ambienteId\": 1,\r\n    \"instructorId\": 3,\r\n    \"fecha\": \"2026-06-23\",\r\n    \"horaInicio\": \"8:00:00\",\r\n    \"horaFin\": \"10:00:00\",\r\n    \"numeroAprendices\": 20\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8080/api/reservas",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8080",
+                      "path": [
+                        "api",
+                        "reservas"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Capacidad Superada",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"ambienteId\": 1,\r\n    \"instructorId\": 3,\r\n    \"fecha\": \"2026-06-25\",\r\n    \"horaInicio\": \"07:00:00\",\r\n    \"horaFin\": \"08:00:00\",\r\n    \"numeroAprendices\": 200\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8080/api/reservas",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8080",
+                      "path": [
+                        "api",
+                        "reservas"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Regla 3 Horario",
+              "item": [
+                {
+                  "name": "Horario institucional",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"ambienteId\": 1,\r\n    \"instructorId\": 3,\r\n    \"fecha\": \"2026-06-23\",\r\n    \"horaInicio\": \"05:00:00\",\r\n    \"horaFin\": \"06:00:00\",\r\n    \"numeroAprendices\": 20\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8080/api/reservas",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8080",
+                      "path": [
+                        "api",
+                        "reservas"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Regla 4 Ambiente inactivo",
+              "item": [
+                {
+                  "name": "Ambiente Inactivo",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"ambienteId\": 4,\r\n    \"instructorId\": 3,\r\n    \"fecha\": \"2026-06-23\",\r\n    \"horaInicio\": \"07:00:00\",\r\n    \"horaFin\": \"08:00:00\",\r\n    \"numeroAprendices\": 20\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8080/api/reservas",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8080",
+                      "path": [
+                        "api",
+                        "reservas"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Regla 5  Límite por instructor",
+              "item": [
+                {
+                  "name": "Limite Instructor valida",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"ambienteId\": 2,\r\n    \"instructorId\": 1,\r\n    \"fecha\": \"2026-06-23\",\r\n    \"horaInicio\": \"17:00:00\",\r\n    \"horaFin\": \"18:00:00\",\r\n    \"numeroAprendices\": 8\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8080/api/reservas",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8080",
+                      "path": [
+                        "api",
+                        "reservas"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Limite Instructor maximo",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"ambienteId\": 2,\r\n    \"instructorId\": 1,\r\n    \"fecha\": \"2026-06-23\",\r\n    \"horaInicio\": \"13:00:00\",\r\n    \"horaFin\": \"14:00:00\",\r\n    \"numeroAprendices\": 15\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8080/api/reservas",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8080",
+                      "path": [
+                        "api",
+                        "reservas"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Regla 1. Cruces de horario",
+              "item": [
+                {
+                  "name": "Registro Valido",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"ambienteId\": 1,\r\n    \"instructorId\": 1,\r\n    \"fecha\": \"2026-06-23\",\r\n    \"horaInicio\": \"15:00:00\",\r\n    \"horaFin\": \"16:00:00\",\r\n    \"numeroAprendices\": 18\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8080/api/reservas",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8080",
+                      "path": [
+                        "api",
+                        "reservas"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Cruse Horario",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"ambienteId\": 1,\r\n    \"instructorId\": 3,\r\n    \"fecha\": \"2026-06-23\",\r\n    \"horaInicio\": \"14:00:00\",\r\n    \"horaFin\": \"16:00:00\",\r\n    \"numeroAprendices\": 12\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8080/api/reservas",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8080",
+                      "path": [
+                        "api",
+                        "reservas"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Regla 6  Cancelación con anticipación",
+              "item": [
+                {
+                  "name": "Cancelación Anticipada",
+                  "request": {
+                    "method": "PATCH",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"ambienteId\": 2,\r\n    \"instructorId\": 4,\r\n    \"fecha\": \"2026-06-23\",\r\n    \"horaInicio\": \"09:00:00\",\r\n    \"horaFin\": \"10:00:00\",\r\n    \"numeroAprendices\": 15\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8080/api/reservas/11/cancelar?fecha=2026-06-23",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8080",
+                      "path": [
+                        "api",
+                        "reservas",
+                        "11",
+                        "cancelar"
+                      ],
+                      "query": [
+                        {
+                          "key": "fecha",
+                          "value": "2026-06-23"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Regla 7  No se reserva en el pasado",
+              "item": [
+                {
+                  "name": "Reserva Pasado",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"ambienteId\": 2,\r\n    \"instructorId\": 1,\r\n    \"fecha\": \"2026-06-21\",\r\n    \"horaInicio\": \"07:00:00\",\r\n    \"horaFin\": \"08:00:00\",\r\n    \"numeroAprendices\": 15\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8080/api/reservas",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8080",
+                      "path": [
+                        "api",
+                        "reservas"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"ambienteId\": 1,\r\n    \"instructorId\": 1,\r\n    \"fecha\": \"2026-06-21\",\r\n    \"horaInicio\": \"20:00:00\",\r\n    \"horaFin\": \"22:00:00\",\r\n    \"numeroAprendices\": 10\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/reservas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "reservas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Consultar",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/ambientes/2/reservas?fecha=2026-06-23",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "ambientes",
+                "2",
+                "reservas"
+              ],
+              "query": [
+                {
+                  "key": "fecha",
+                  "value": "2026-06-23"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cancelar",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/reservas/2/cancelar?fecha=2026-06-21",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "reservas",
+                "2",
+                "cancelar"
+              ],
+              "query": [
+                {
+                  "key": "fecha",
+                  "value": "2026-06-21"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Reporte",
+      "item": [
+        {
+          "name": "Ocupación",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/reportes/ocupacion?fecha=2026-06-23",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "reportes",
+                "ocupacion"
+              ],
+              "query": [
+                {
+                  "key": "fecha",
+                  "value": "2026-06-23"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Ambiente mas Usado",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/reportes/ambiente-mas-usado",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "reportes",
+                "ambiente-mas-usado"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

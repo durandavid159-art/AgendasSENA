@@ -1,5 +1,4 @@
-create database AgendasSena;
-use AgendasSena;
+
 SELECT * FROM reservas;
 -- AMBIENTES
 INSERT INTO ambientes (nombre, tipo, capacidad, activo) VALUES
@@ -17,11 +16,11 @@ INSERT INTO instructores (nombre, telefono) VALUES
 
 --  RESERVAS
 
--- probar Regla 1
+-- Regla 1 Sin cruces de horario
 INSERT INTO reservas (ambiente_id, instructor_id, fecha_hora_inicio, fecha_hora_fin, numero_aprendices, estado) VALUES
-(1, 1, CONCAT(CURDATE(), ' 09:00:00'), CONCAT(CURDATE(), ' 11:00:00'), 18, 'Activa');
+(1, 1, CONCAT(CURDATE(), ' 15:00:00'), CONCAT(CURDATE(), ' 16:00:00'), 18, 'Activa');
 
--- reporte de ocupación
+-- Regla 1 reporte de ocupación
 INSERT INTO reservas (ambiente_id, instructor_id, fecha_hora_inicio, fecha_hora_fin, numero_aprendices, estado) VALUES
 (2, 2, CONCAT(CURDATE(), ' 14:00:00'), CONCAT(CURDATE(), ' 16:00:00'), 12, 'Activa');
 
@@ -29,7 +28,7 @@ INSERT INTO reservas (ambiente_id, instructor_id, fecha_hora_inicio, fecha_hora_
 INSERT INTO reservas (ambiente_id, instructor_id, fecha_hora_inicio, fecha_hora_fin, numero_aprendices, estado) VALUES
 (3, 3, CONCAT(CURDATE(), ' 08:00:00'), CONCAT(CURDATE(), ' 10:00:00'), 20, 'Activa');
 
--- útil para /ambientes/disponibles
+-- Para /ambientes/disponibles MIRAR
 INSERT INTO reservas (ambiente_id, instructor_id, fecha_hora_inicio, fecha_hora_fin, numero_aprendices, estado) VALUES
 (3, 1, CONCAT(CURDATE(), ' 18:00:00'), CONCAT(CURDATE(), ' 20:00:00'), 22, 'Activa');
 
@@ -37,7 +36,7 @@ INSERT INTO reservas (ambiente_id, instructor_id, fecha_hora_inicio, fecha_hora_
 INSERT INTO reservas (ambiente_id, instructor_id, fecha_hora_inicio, fecha_hora_fin, numero_aprendices, estado) VALUES
 (1, 1, CONCAT(CURDATE(), ' 12:00:00'), CONCAT(CURDATE(), ' 13:00:00'), 10, 'Activa');
 
---  crear una CUARTA reserva
+-- Regla 5  reservas ACTIVAS el mismo día
 INSERT INTO reservas (ambiente_id, instructor_id, fecha_hora_inicio, fecha_hora_fin, numero_aprendices, estado) VALUES
 (2, 1, CONCAT(CURDATE(), ' 17:00:00'), CONCAT(CURDATE(), ' 18:00:00'), 8, 'Activa');
 
@@ -45,6 +44,6 @@ INSERT INTO reservas (ambiente_id, instructor_id, fecha_hora_inicio, fecha_hora_
 INSERT INTO reservas (ambiente_id, instructor_id, fecha_hora_inicio, fecha_hora_fin, numero_aprendices, estado) VALUES
 (1, 2, CONCAT(DATE_SUB(CURDATE(), INTERVAL 1 DAY), ' 09:00:00'), CONCAT(DATE_SUB(CURDATE(), INTERVAL 1 DAY), ' 12:00:00'), 15, 'Finalizada');
 
--- reserva CANCELADA no cuenta para solapamiento
+-- Regla 6 reserva CANCELADA 
 INSERT INTO reservas (ambiente_id, instructor_id, fecha_hora_inicio, fecha_hora_fin, numero_aprendices, estado) VALUES
 (2, 4, CONCAT(CURDATE(), ' 09:00:00'), CONCAT(CURDATE(), ' 10:00:00'), 9, 'Cancelada');
