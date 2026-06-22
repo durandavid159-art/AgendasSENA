@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReporteOcupacion {
+public class ReporteOcupacionDto {
     private String ambiente;
     private double horasReservadas;
     private double porcentajeOcupacion;

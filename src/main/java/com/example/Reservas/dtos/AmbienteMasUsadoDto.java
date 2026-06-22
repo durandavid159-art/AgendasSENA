@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AmbienteMasUsado {
+public class AmbienteMasUsadoDto {
 private String ambiente;
     private long cantidadReservas;
     private double totalHorasReservadas;
