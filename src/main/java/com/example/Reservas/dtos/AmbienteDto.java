@@ -7,8 +7,10 @@ import lombok.Data;
 @Data 
 
 public class AmbienteDto {
+    
+    private Long id;
+    private String nombre;
     private TipoAmbiente tipo;
     private Integer capacidad;
     private boolean activo;
-
 }
